@@ -1,0 +1,28 @@
+name: flatpak
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: flatpak
+        run: |
+          sudo add-apt-repository ppa:alexlarsson/flatpak
+          sudo apt update
+          sudo apt install flatpak
+          git config --global protocol.file.allow always                      
+          git config --global protocol.allow always                                
+          flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+          flatpak install flathub org.freedesktop.Sdk//22.08
+          cd ~
+          git clone --recursive https://github.com/flathub/org.telegram.desktop.git
+          cd ~/org.telegram.desktop.git
+          flatpak-builder --force-clean --repo=~/repo ~/bild_dir org.telegram.desktop.yml
+          mkdir ~/bundle
+          cd ~/bundle
+          flatpak build-bundle repo telegram_desktop.flatpak org.telegram.desktop
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: telegram_desktop
+          path: ~/bundle/*.flatpak
+
