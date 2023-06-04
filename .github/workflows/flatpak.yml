@@ -14,8 +14,8 @@ jobs:
           sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
           sudo flatpak install flathub org.freedesktop.Sdk//22.08 --noninteractive
           cd ~
-          git clone --recursive https://github.com/flathub/org.telegram.desktop.git
-          cd ~/org.telegram.desktop.git
+          git clone --recursive https://github.com/flathub/org.telegram.desktop
+          cd org.telegram.desktop
           flatpak-builder --force-clean --repo=~/repo ~/bild_dir org.telegram.desktop.yml
           mkdir ~/bundle
           cd ~/bundle
