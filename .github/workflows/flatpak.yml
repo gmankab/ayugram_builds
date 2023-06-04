@@ -9,10 +9,10 @@ jobs:
           sudo add-apt-repository -r ppa:alexlarsson/flatpak
           sudo apt update -q
           sudo apt install flatpak -q
-          git config --global protocol.file.allow always                      
-          git config --global protocol.allow always                                
-          flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-          flatpak install flathub org.freedesktop.Sdk//22.08
+          sudo git config --global protocol.file.allow always                      
+          sudo git config --global protocol.allow always                                
+          sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+          sudo flatpak install flathub org.freedesktop.Sdk//22.08
           cd ~
           git clone --recursive https://github.com/flathub/org.telegram.desktop.git
           cd ~/org.telegram.desktop.git
