@@ -12,7 +12,7 @@ jobs:
           sudo git config --global protocol.file.allow always                      
           sudo git config --global protocol.allow always                                
           sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-          sudo flatpak install flathub org.freedesktop.Sdk//22.08
+          sudo flatpak install flathub org.freedesktop.Sdk//22.08 --noninteractive
           cd ~
           git clone --recursive https://github.com/flathub/org.telegram.desktop.git
           cd ~/org.telegram.desktop.git
