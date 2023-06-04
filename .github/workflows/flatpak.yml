@@ -8,7 +8,7 @@ jobs:
         run: |
           sudo add-apt-repository -r ppa:alexlarsson/flatpak
           sudo apt update -q
-          sudo apt install flatpak -q
+          sudo apt install flatpak flatpak-builder -q
           sudo git config --global protocol.file.allow always                      
           sudo git config --global protocol.allow always                                
           sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
